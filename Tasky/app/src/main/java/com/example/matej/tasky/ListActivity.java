@@ -9,7 +9,8 @@ import android.widget.ListView;
 
 public class ListActivity extends AppCompatActivity {
     ListView lvTaskView;
-    Button categoryButton,taskButton;
+    Button taskButton;
+    TaskAdapter TaskAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,6 @@ public class ListActivity extends AppCompatActivity {
     }
 private void setUpUI(){
     lvTaskView = (ListView) findViewById(R.id.lvTaskList);
-    categoryButton = (Button) findViewById(R.id.categoryButton);
     taskButton = (Button) findViewById(R.id.taskButton);
     taskButton.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -29,13 +29,6 @@ private void setUpUI(){
             startActivity(explicitIntent);
         }
     });
-    categoryButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent explicitIntent = new Intent();
-            explicitIntent.setClass(getApplicationContext(), CategoryActivity.class);
-            startActivity(explicitIntent);
-        }
-    });
+
 }
 }

@@ -20,22 +20,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:hint="Input task"
         />
     <Spinner
         android:id="@+id/prioritySpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="260dp"
         >
     </Spinner>
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
-        >
-    </Spinner>
-
 
     <Button
         android:id="@+id/addtaskButton"
