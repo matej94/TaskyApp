@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,11 +17,17 @@ public class TaskAdapter extends BaseAdapter {
     private ArrayList<Task> mTasks;
     public TaskAdapter(ArrayList<Task> tasks) { mTasks = tasks; }
     @Override
-    public int getCount() { return this.mTasks.size(); }
+    public int getCount() {
+        return this.mTasks.size();
+    }
     @Override
-    public Object getItem(int position) { return this.mTasks.get(position); }
+    public Object getItem(int position) {
+        return this.mTasks.get(position);
+    }
     @Override
-    public long getItemId(int position) { return position; }
+    public long getItemId(int position) {
+        return position;
+    }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder taskViewHolder;
@@ -35,14 +42,27 @@ public class TaskAdapter extends BaseAdapter {
         }
         Task task = this.mTasks.get(position);
         taskViewHolder.tvTaskTitle.setText(task.getTitle());
+        taskViewHolder.tvTaskDescription.setText(task.getDescription());
+        taskViewHolder.ivPriority.setImageResource(task.getPriority());
         return convertView;
     }
     public static class ViewHolder {
         public TextView tvTaskTitle;
-        public ViewHolder(View bookView) {
-            tvTaskTitle = (TextView) bookView.findViewById(R.id.tvTaskTitle);
-
+        public TextView tvTaskDescription;
+        public ImageView ivPriority;
+        public ViewHolder(View taskView) {
+            tvTaskTitle = (TextView) taskView.findViewById(R.id.tvTaskTitle);
+            tvTaskDescription = (TextView) taskView.findViewById(R.id.tvTaskDescription);
+            ivPriority = (ImageView) taskView.findViewById(R.id.ivPriority);
         }
+    }
+    public void add(Task task) {
+        this.mTasks.add(task);
+        this.notifyDataSetChanged();
+    }
+    public void delete(int position) {
+        this.mTasks.remove(position);
+        this.notifyDataSetChanged();
     }
 }
 
